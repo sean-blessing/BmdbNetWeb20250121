@@ -103,5 +103,11 @@ namespace BmdbNetWeb.Controllers
         {
             return _context.Movies.Any(e => e.Id == id);
         }
+
+        // GET: api/Movies/by-rating/PG
+        [HttpGet("by-rating/{rating}")]
+        public async Task<ActionResult<IEnumerable<Movie>>> GetMoviesForRating(string rating) {
+            return await _context.Movies.Where(m => m.Rating == rating).ToListAsync();
+        }
     }
 }
