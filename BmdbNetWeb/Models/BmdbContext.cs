@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using BmdbNetWeb.Models;
 
 namespace BmdbNetWeb.Models;
 
@@ -19,5 +20,7 @@ public partial class BmdbContext : DbContext
     public virtual DbSet<Movie> Movies { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
+
+    public virtual DbSet<MovieCollection> MovieCollections { get; set; }
 
 }
