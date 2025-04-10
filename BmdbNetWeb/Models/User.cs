@@ -13,6 +13,7 @@ namespace BmdbNetWeb.Models {
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public decimal CollectionValue { get; set; }
+        public Boolean Admin { get; set; } = false;
 
     }
 }
