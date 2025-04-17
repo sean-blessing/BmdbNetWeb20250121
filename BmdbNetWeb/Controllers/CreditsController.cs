@@ -81,10 +81,27 @@ namespace BmdbNetWeb.Controllers
         [HttpPost]
         public async Task<ActionResult<Credit>> PostCredit(Credit credit)
         {
+            nullifyAndSetIds(credit);
             _context.Credits.Add(credit);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCredit", new { id = credit.Id }, credit);
+        }
+
+        private void nullifyAndSetIds(Credit credit) {
+            if (credit.Actor != null) {
+                if (credit.ActorId == 0) {
+                    credit.ActorId = credit.Actor.Id;
+                }
+                credit.Actor = null;
+            }
+            if (credit.Movie != null) {
+                if (credit.MovieId == 0) {
+                    credit.MovieId = credit.Movie.Id;
+                }
+                credit.Movie = null;
+            }
+
         }
 
         // DELETE: api/Credits/5
